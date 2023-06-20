@@ -46,18 +46,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun defaultSearch() {
         val savedMovie = retrieveLastSearchValue()
-        movieName = if (savedMovie == "") "wonder"
-        else savedMovie
+        movieName = savedMovie
         getMovies(savedMovie)
     }
 
     private fun retrieveLastSearchValue(): String {
-        return sharedPref.getString("savedMovieMame", "")!!
+        return sharedPref.getString("saveMovieName", "wonder")!!
     }
 
     private fun savedLastSearchValue(str: String) {
         val editor = sharedPref.edit()
-        editor.putString("savedMovieMame", str)
+        editor.putString("savedMovieName", str)
         editor.apply()
     }
 
