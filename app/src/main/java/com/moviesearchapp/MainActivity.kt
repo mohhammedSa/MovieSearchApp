@@ -19,12 +19,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var sharedPref: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        list = ArrayList()
-        movieName = ""
-        sharedPref = getSharedPreferences("moviesName", Context.MODE_PRIVATE)
 
-
+        initializeAllVariables()
         defaultSearch()
 
         binding.imageButton.setOnClickListener {
@@ -32,6 +28,13 @@ class MainActivity : AppCompatActivity() {
                 searchBtnClick()
             }
         }
+    }
+
+    private fun initializeAllVariables() {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        list = ArrayList()
+        movieName = ""
+        sharedPref = getSharedPreferences("moviesName", Context.MODE_PRIVATE)
     }
 
     private fun searchBtnClick() {
